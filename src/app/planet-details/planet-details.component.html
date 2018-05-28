@@ -1,0 +1,21 @@
+<h1>{{planet.name}} documentation</h1>
+
+    <article>
+        <section>We have started collect information's about this planet on <strong>{{planet.created | date:'short'}}</strong>.
+        Exploration of this planet were very successful until <strong>{{planet.edited | date:'short'}}</strong>.
+        That was a day that the scientists were made last documentation update. We don't know why they decided to
+            abandon their data-collection, but here are some of the information's that have survived until today:</section>
+            <ul>
+                <li><b>Rotation period</b>: {{planet.rotation_period}}</li>
+                <li><b>Orbital period</b>: {{planet.orbital_period}}</li>
+                <li><b>Diameter</b>: {{planet.diameter}}</li>
+                <li><b>Climate</b>: {{planet.climate}}</li>
+                <li><b>Gravity</b>: {{planet.gravity}}</li>
+                <li><b>Terrain</b>: {{planet.terrain}}</li>
+                <li><b>Surface Water</b>: {{planet.surface_water}}</li>
+                <li><b>Population</b>: {{planet.population}}</li>
+            </ul>
+        <section>If you are in possession of useful information's, with are not present in this documentation, please contact your
+            local Space Data Collecting department or write en email to administration.</section>
+    </article>
+

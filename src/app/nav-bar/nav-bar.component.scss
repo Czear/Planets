@@ -1,0 +1,27 @@
+nav {
+
+  margin-bottom: 1%;
+  text-align: center;
+}
+
+span {
+  cursor: pointer;
+}
+
+.searchBarContainer {
+  display: flex;
+  align-items: center;
+}
+
+.form-control {
+  width: 90%;
+  margin-right: 3%;
+}
+
+.selected {
+  border: 1px solid #2979ff;
+}
+
+.homeLink {
+  cursor: pointer;
+}

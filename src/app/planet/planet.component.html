@@ -1,0 +1,8 @@
+<div class="card">
+    <h5 class="card-header text-white bg-dark">{{planetData.name}}</h5>
+    <div class="card-body">
+            <p>Climate of this planet is {{planetData.climate}}</p>
+            <p>Updated: {{planetData.edited | date:'mediumDate'}}</p>
+        <button type="button" class="btn btn-info" [routerLink]="['planet', getPlanetUrlID()]">{{planetData.name}} details!</button>
+    </div>
+</div>

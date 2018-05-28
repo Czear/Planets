@@ -1,0 +1,8 @@
+<nav aria-label="navigation" *ngIf="functionalityStatus">
+  <ul class="pagination justify-content-center" (click)="setPage($event.target.innerHTML - 1)">
+   <li class="page-item"
+       *ngFor="let number of getNumberOfPages()"
+       [ngClass] = "{'active': number == currentPage}">
+       <a class="page-link">{{number + 1}}</a></li>
+  </ul>
+</nav>
