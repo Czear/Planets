@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PlanetsServiceService} from '../shared/planets-service.service';
 
 
@@ -7,23 +7,29 @@ import {PlanetsServiceService} from '../shared/planets-service.service';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent implements OnInit, OnDestroy {
   constructor(private planetsService: PlanetsServiceService) { }
+    functionalitySubscription;
+    dataSubscription;
     filtredPlanets = []; // Data that will be sliced to smaller data amounts for purpose of pagination
     currentPage = 0; // Needed only for styling purpose
     functionalityStatus = true;
       ngOnInit() {
-          this.planetsService.functionalityStatus.subscribe(
+          this.functionalitySubscription = this.planetsService.functionalityStatus.subscribe(
               (newStatus: boolean) => this.functionalityStatus = newStatus);
        // Force data flow in case of user backs form planet detail component
        this.filtredPlanets = this.planetsService.allPlanets;
-           this.planetsService.filtredPlanetsOutput.subscribe(
+          this.dataSubscription =  this.planetsService.filtredPlanetsOutput.subscribe(
                 (filtredPlanetsInput: any) => {
                   this.filtredPlanets = filtredPlanetsInput;
                     this.setPage(0); // With every data change user will be referred to first slice of data
                 }
             );
       }
+    ngOnDestroy () {
+        this.functionalitySubscription.unsubscribe();
+        this.dataSubscription.unsubscribe();
+    }
     setPage(pageNum) {
           if (pageNum >= 0) {
               this.currentPage = pageNum;

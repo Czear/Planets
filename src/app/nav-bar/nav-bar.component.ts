@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PlanetsServiceService} from '../shared/planets-service.service';
 
 @Component({

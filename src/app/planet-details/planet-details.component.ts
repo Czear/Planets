@@ -9,12 +9,13 @@ import {PlanetsServiceService} from '../shared/planets-service.service';
 })
 export class PlanetDetailsComponent implements OnInit, OnDestroy {
   planet = {};
+  routeSubscription;
   constructor(private route: ActivatedRoute,
               private planetsService: PlanetsServiceService,
               private router: Router) { }
   ngOnInit() {
       // Get particular planet data from the server
-      this.route.params.subscribe(
+      this.routeSubscription = this.route.params.subscribe(
           (params) => {
               this.planetsService.GETrequest('https://swapi.co/api/planets/' + params['id'] + '/')
                   .subscribe((result: any) => {
@@ -30,5 +31,6 @@ export class PlanetDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy () {
       // Turn on functionality if you are leaving planet-details component
       this.planetsService.functionalityStatus.next(true);
+      this.routeSubscription.unsubscribe();
   }
 }
